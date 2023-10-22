@@ -12,10 +12,6 @@ for _ in range(size):
     end_time.append(int(endTime))
 
 
-
-
-
-
 for i in range(len(start_time)):
     min_loc = i
     for j in range(i+1,len(start_time)):
