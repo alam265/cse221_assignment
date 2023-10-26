@@ -1,5 +1,5 @@
-data = open('input1.txt','r')
-result = open('output1.txt','w')
+data = open('input3.txt','r')
+result = open('output3.txt','w')
 
 length = int(data.readline())
 
@@ -7,11 +7,10 @@ arrStr = data.readline().split(' ')
 arr = [int(n) for n in arrStr]
 
 
-
 def merge(a, b):
-    res = [] 
-
+    global count
     i = j = 0 
+    res =[]
 
     while i < len(a) and j < len(b):
         if a[i] < b[j]:
@@ -19,6 +18,7 @@ def merge(a, b):
             i+=1 
         else:
             res.append(b[j])
+            count+= len(a) - i
             j+=1 
 
     while i < len(a):
@@ -27,10 +27,13 @@ def merge(a, b):
     while j < len(b):
         res.append(b[j])
         j+=1 
+    
+
 
     return res 
 
 def mergeSort(arr):
+   
     if len(arr) <= 1:
         return arr
     else:
@@ -40,11 +43,14 @@ def mergeSort(arr):
         return merge(a1, a2)     
     
 
+count=0
+mergeSort(arr)
+result.write(f"{count}")
 
-Sorted_arr = mergeSort(arr)
 
-for i in Sorted_arr:
-    result.write(f"{i} ")
-
-# Explanation:
-# We just perform basic Merge Sort 
+""""
+Explanation:
+Here we add a condition and global count variable for this task. To elaborate, Whenerver a value of right array 
+is greater than a value of left sub array we are counting for that right sub array's element and also for the rest.
+because the array is sorted. 
+"""

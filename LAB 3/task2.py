@@ -1,3 +1,13 @@
+data = open('input2.txt','r')
+result = open('output2.txt','w')
+
+length = int(data.readline())
+
+arrStr = data.readline().split(' ')
+arr = [int(n) for n in arrStr]
+
+
+
 def merge(a, b):
     if a > b:
         return a 
@@ -17,4 +27,11 @@ def mergeSort(arr):
     
 
 
-print(mergeSort([1, 7, 13, 4, 5, 7, 13, 12]))
+result.write(f"{mergeSort(arr)}")
+
+# Time Complexity: nlog2(n)
+
+'''
+Explanation:
+Here we just modified the Merge Sort algorithm. Instead of Sorting and merging back the the subarrays here we returned the bigger element.
+'''
